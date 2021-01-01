@@ -1,6 +1,7 @@
 # https://www.acmicpc.net/problem/1912
 # https://www.acmicpc.net/board/view/28134
 
+# 방법 1
 # https://claude-u.tistory.com/175
 import sys
 
@@ -14,6 +15,19 @@ for i in range(n):
     maxVal = max(maxVal, temp[i])
 
 print(maxVal)
+
+# 방법 2
+# https://www.acmicpc.net/source/24784874
+n = int(input())
+data = list(map(int, input().split()))
+dp = [0]*n
+dp[0] = data[0]
+
+for i in range(1, n):
+    dp[i] = max(data[i]+dp[i-1], data[i])
+
+print(max(dp))
+
 
 # 시간 초과 - O(n^2)
 # import sys
