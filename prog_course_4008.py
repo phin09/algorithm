@@ -74,7 +74,7 @@ def solution(mylist):
     return answer
 
 # 배열의 모든 요소를 이어붙인 문자열을 리턴
-# 문자열 배열뿐만 아니라 정수형 튜플에서도 이용 가능
+# 문자열 배열뿐만 아니라 정수형 튜플에서도 이용 가능 -> 정수형 튜플에서 되는거 맞음???
 my_list = ['1', '100', '33']
 answer = ''.join(my_list)   # "110033"
 
@@ -175,5 +175,25 @@ def solution(mylist):
     answer = list(map(list, itertools.permutations(mylist)))
     return answer
 
+# 가장 많이 등장하는 알파벳 찾기
+# collections.Counter
+# 리스트를 넣으면 리스트의 원소가 key로, cnt가 value로 들어가는 dict를 만들어줌
+# 내가 푼 코드. 질문게시판에서 다른 사람것도 보기(lambda 함수쓰는거 공부해야될듯..)
+from collections import Counter
 
+my_str = input().strip()
+tempArr = []
+for i in range(len(my_str)):
+    key = my_str[i:i+1]
+    tempArr.append(key)
+    
+tempDict = Counter(tempArr)
+maxCnt = max(tempDict.values())
+result = []
+for key, value in tempDict.items():
+    if value == maxCnt:
+        result.append(key)
+
+result.sort()
+print(''.join(result))
 
